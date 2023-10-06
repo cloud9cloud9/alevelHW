@@ -13,6 +13,7 @@ public class Task2 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String userInput = scanner(scan);
+        userInput = customTrim(userInput);
         if (userInput.equals("")) {
             System.out.println("Ви ввели пусту строку.");
             } else {
@@ -35,10 +36,9 @@ public class Task2 {
         }
         return wordCounter;
     }
-    ///public static boolean endsSymbol(String text, char symbol1){
-  //     boolean endsWithSpace = text.endsWith(" ");
-   //     return endsWithSpace;
-   // }
+    public static String customTrim(String input){
+      return input.trim();
+    }
 }
 
 
