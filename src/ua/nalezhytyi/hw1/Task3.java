@@ -1,4 +1,6 @@
-public class homework1task3 {
+package ua.nalezhytyi.hw1;
+
+public class Task3 {
         public static void main(String[] args) {
             int a = 5;
             int b = 3;

@@ -1,4 +1,6 @@
-public class homework1task1 {
+package ua.nalezhytyi.hw1;
+
+public class Task1 {
         public static void main(String[] args) {
             int age = 21;
             String name = "Влад";

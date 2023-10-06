@@ -1,4 +1,6 @@
-public class homeworknumber2 {
+package ua.nalezhytyi.hw2;
+
+public class Task234 {
     public static void main(String[] args) {
         /* у написанні методу, який шукає найбільше і найменше число в модулі, використав допомогу chatgpt
         бо в моєму методі, який я сам написав, чомусь не виводились данні, писало просто що немає помилок в

@@ -1,6 +1,8 @@
+package ua.nalezhytyi.hw2;
+
 import java.util.Scanner;
 
-public class homew2task5 {
+public class Task5 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         // отримуємо дані від користувача
