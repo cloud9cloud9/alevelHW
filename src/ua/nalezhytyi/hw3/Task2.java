@@ -13,12 +13,13 @@ public class Task2 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String userInput = scanner(scan);
-        userInput = customTrim(userInput);
-        if (userInput.equals("")) {
+        String cleanedUserInput = replaceMultipleSpaces(userInput);
+
+        if (cleanedUserInput.equals("")) {
             System.out.println("Ви ввели пусту строку.");
             } else {
-                int wordCount = calcWordsInSentence(userInput, ' ');
-                System.out.println("Кількість слів в реченні: " + wordCount);
+                int wordCount = calcWordsInSentence(cleanedUserInput.trim(), ' ');
+            System.out.println("Кількість слів в реченні: " + wordCount);
         }
     }
     public static String scanner(Scanner s) {
@@ -36,8 +37,8 @@ public class Task2 {
         }
         return wordCounter;
     }
-    public static String customTrim(String input){
-      return input.trim();
+    public static String replaceMultipleSpaces(String text) {
+        return text.replaceAll("\\s+", " ");
     }
 }
 
