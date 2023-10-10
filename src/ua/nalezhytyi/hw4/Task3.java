@@ -15,7 +15,7 @@ public class Task3 {
     }
     public static void fill(int[] array){
         for (int i = 0; i < array.length; i++) {
-            array[i] = ThreadLocalRandom.current().nextInt();
+            array[i] = ThreadLocalRandom.current().nextInt(1, 10);
         }
     }
     public static void replaceEvenWithZero(int[] numbers) {
