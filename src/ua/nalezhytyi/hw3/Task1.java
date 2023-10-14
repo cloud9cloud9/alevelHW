@@ -40,6 +40,6 @@ public class Task1 {
     }
     // метод, який визначає, чи є наше речення поліндромом
     public static boolean isTrue (String dontReplace, String replace){
-       return dontReplace == replace;
+        return dontReplace.equals(replace);
     }
 }
