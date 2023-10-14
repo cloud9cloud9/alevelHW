@@ -14,13 +14,19 @@ public class Task4 {
 
     public static int minusAndSmallestIntInModule(int[] array) {
         int minAbsoluteValue = Math.abs(array[0]);
+        int minValueInArr = 0;
         for (int i = 0; i < array.length; i++) {
             int result = (array[i] < 0) ? Math.abs(array[i]) : array[i];
-            if (minAbsoluteValue > result) {
+            if (minAbsoluteValue > result){
                 minAbsoluteValue = result;
+                minValueInArr = i;
             }
         }
-        return minAbsoluteValue;
+        if (array[minValueInArr] < 0) {
+            return array[minValueInArr];
+        } else {
+            return minAbsoluteValue;
+        }
     }
 
     public static void fillArray(int[] array) {
