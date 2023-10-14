@@ -1,32 +1,31 @@
 package ua.nalezhytyi.hw2;
 
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Task4 {
     public static void main(String[] args) {
-        int [] numbers1 = {1, 3, 5, 5, 6, 7,};
-        int [] numbers2 = {1, 3, 5, 5, 6, 7};
-        int max = numbersMax(numbers1);
-        System.out.println("Найбілшим числом за модулем є : " + max);
-        int min = numbersMin(numbers2);
-        System.out.println("Найменшим числом за модулем є : " + min);
-
-    }
-    public static int numbersMax(int[] numbers1) {
-        int max = numbers1[0];
-        for (int i = 0; i < numbers1.length; i++) {
-            if(numbers1[i] > max) {
-                max = numbers1[i];
-            }
-        }
-        return max;
+        int[] arrayModule = new int[3];
+        fillArray(arrayModule);
+        System.out.println(Arrays.toString(arrayModule));
+        int result = minusAndSmallestIntInModule(arrayModule);
+        System.out.println(result);
     }
 
-    public static int numbersMin(int[] numbers2) {
-        int min = numbers2[0];
-        for (int i = 0; i <numbers2.length ; i++) {
-            if(numbers2[i] < min) {
-                min = numbers2[i];
+    public static int minusAndSmallestIntInModule(int[] array) {
+        int minAbsoluteValue = Math.abs(array[0]);
+        for (int i = 0; i < array.length; i++) {
+            int result = (array[i] < 0) ? Math.abs(array[i]) : array[i];
+            if (minAbsoluteValue > result) {
+                minAbsoluteValue = result;
             }
         }
-        return min;
+        return minAbsoluteValue;
+    }
+
+    public static void fillArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = ThreadLocalRandom.current().nextInt(-50, 50);
+        }
     }
 }

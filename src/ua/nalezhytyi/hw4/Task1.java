@@ -32,9 +32,11 @@ public class Task1 {
     // середнє геометричне
     public static double geometricMean(int[] array) {
         double sum = 1;
+
         for (int i = 0; i < array.length; i++) {
             sum *= array[i];
         }
-        return Math.sqrt(sum);
+        double geometricMean = Math.pow(sum, 1.0 / array.length);
+        return geometricMean;
     }
 }

@@ -15,12 +15,6 @@ public class Task3 {
             System.out.println("Число є парним");
         }
     }
-    public static String scanner(Scanner s) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Введіть ваше числове значення:");
-        String sc = scan.nextLine();
-        return sc;
-    }
     public static boolean isOdd(int number){
         return number % 2 != 0;
     }

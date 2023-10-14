@@ -9,9 +9,10 @@ public class Task3 {
     public static void main(String[] args) {
         int [] numbers = new int[2000];
         fill(numbers);
+        int[] numbersCopies = Arrays.copyOf(numbers, numbers.length);
         System.out.println(Arrays.toString(numbers));
-        replaceEvenWithZero(numbers);
-        System.out.println(Arrays.toString(numbers));
+        replaceEvenWithZero(numbersCopies);
+        System.out.println(Arrays.toString(numbersCopies));
     }
     public static void fill(int[] array){
         for (int i = 0; i < array.length; i++) {

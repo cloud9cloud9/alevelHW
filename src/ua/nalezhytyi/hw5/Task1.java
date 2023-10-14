@@ -14,14 +14,11 @@ public class Task1 {
     //*Передать массив в метод, заполнить данный массив
     public static void main(String[] args) {
         int[][] arr = new int[5][5];
-        int[][] arrWeAreChange = new int[5][5];
         fillArray(arr);
-        fillArray(arrWeAreChange);
-        changeToMinus(arrWeAreChange);
-        System.out.println("Масив, числа в якому не змінені на мінусові " + Arrays.deepToString(arr));
-        System.out.println("Масив, числа в якому змінені на мінусові " + Arrays.deepToString(arrWeAreChange));
+        System.out.println("Масив, числа в якому змінені на мінусові " + Arrays.deepToString(arr));
 
     }
+
 
     public static void fillArray(int[][] array) {
         int arr = 0;
@@ -29,17 +26,10 @@ public class Task1 {
             for (int j = 0; j < array[i].length; j++) {
                 array[i][j] = arr;
                 arr++;
-            }
-        }
-    }
-
-    public static void changeToMinus(int[][] array) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
                 if (i % 2 == 0) {
                     continue;
                 } else {
-                    array[i][j] = -array[i][j];
+                    array[i][j] *= -1;
                 }
             }
         }
