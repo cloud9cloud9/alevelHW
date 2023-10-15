@@ -10,7 +10,7 @@ public class Task2 {
         int[] arrayOfNumbers = new int[1000];
         fill(arrayOfNumbers);
         System.out.println(Arrays.toString(arrayOfNumbers));
-        System.out.println(integerNum(arrayOfNumbers));
+        System.out.println(countPrimeNumbers(arrayOfNumbers));
 
     }
     public static void fill(int[] array) {
@@ -18,7 +18,7 @@ public class Task2 {
             array[i] = ThreadLocalRandom.current().nextInt(1, 10);
         }
     }
-    public static int integerNum (int[] arr){
+    public static int countPrimeNumbers (int[] arr){
         int s = 0;
         for (int i = 0; i < arr.length ; i++) {
                 if(isPrime(arr[i])) {

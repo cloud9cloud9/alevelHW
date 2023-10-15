@@ -24,12 +24,10 @@ public class Task1 {
         int arr = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                array[i][j] = arr;
-                arr++;
-                if (i % 2 == 0) {
-                    continue;
+                if (i % 2 ==0) {
+                    array[i][j] = arr ++;
                 } else {
-                    array[i][j] *= -1;
+                    array[i][j] = -arr++;
                 }
             }
         }

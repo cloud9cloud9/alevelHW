@@ -9,21 +9,23 @@ public class Task3 {
     public static void main(String[] args) {
         int [] numbers = new int[2000];
         fill(numbers);
-        int[] numbersCopies = Arrays.copyOf(numbers, numbers.length);
+        int[] arrayCopies = replaceEvenWithZero(numbers);
         System.out.println(Arrays.toString(numbers));
-        replaceEvenWithZero(numbersCopies);
-        System.out.println(Arrays.toString(numbersCopies));
+        replaceEvenWithZero(arrayCopies);
+        System.out.println(Arrays.toString(arrayCopies));
     }
     public static void fill(int[] array){
         for (int i = 0; i < array.length; i++) {
             array[i] = ThreadLocalRandom.current().nextInt(1, 10);
         }
     }
-    public static void replaceEvenWithZero(int[] numbers) {
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % 2 == 0) {
-                numbers[i] = 0;
+    public static int[] replaceEvenWithZero(int[] numbers) {
+        int[] numbersCopies = Arrays.copyOf(numbers, numbers.length);
+        for (int i = 0; i < numbersCopies.length; i++) {
+            if (numbersCopies[i] % 2 == 0) {
+                numbersCopies[i] = 0;
             }
         }
+        return numbersCopies;
     }
 }
