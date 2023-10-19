@@ -24,10 +24,8 @@ bin/
 
 ### VS Code ###
 .vscode/
-
 ### Mac OS ###
 .DS_Store
-
 # Игнорировать файлы и папки, связанные с Java компиляцией
 *.class
 /bin/
