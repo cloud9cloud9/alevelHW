@@ -7,8 +7,8 @@ public class Phone {
 
     public static void main(String[] args) {
         Phone phone = new Phone("88005553535", "Iphone9", 0.150);
-        Phone phoneSecond = new Phone("999666999", "Samsung f20");
-        Phone phoneThird = new Phone();
+        Phone phoneSecond = new Phone("999666999", "Samsung f20", 0.222);
+        Phone phoneThird = new Phone("992391919", "iphone 999", 0.666);
         System.out.println(phone);
         System.out.println(phoneSecond);
         System.out.println(phoneThird);
