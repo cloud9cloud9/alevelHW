@@ -10,17 +10,18 @@ public class Animal {
     }
     public Animal() {
     }
+
     public void eat() {
         System.out.println("animal is eat");
     }
-    public final void howMuchSleepfinal(int animalSleep) {
+    public final void printSleepHours(int animalSleep) {
         System.out.println("Animal is " + animalSleep + " hours sleeping");
     }
-    public void getAnimalEat() {
-        System.out.println("animal eat: " + animalEat);
+    public String getAnimalEat() {
+        return animalEat;
     }
-    public void setAnimalEat(String animalSay) {
-        this.animalEat = animalSay;
+    public void setAnimalEat(String animalEat) {
+        this.animalEat = animalEat;
     }
     public int getAnimalSleep() {
         return animalSleep;
@@ -28,15 +29,6 @@ public class Animal {
     public int setAnimalSleep(int animalSleep) {
         this.animalSleep = animalSleep;
         return animalSleep;
-    }
-    public static Animal findSleepyAnimal(Animal[] animals) {
-        Animal isMoreSleep = animals[0];
-        for (int i = 0; i < animals.length; i++) {
-            if (animals[i].getAnimalSleep() > isMoreSleep.getAnimalSleep()) {
-                isMoreSleep = animals[i];
-            }
-        }
-        return isMoreSleep;
     }
     @Override
     public String toString() {
