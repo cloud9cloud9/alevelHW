@@ -36,9 +36,9 @@ public class Main {
     }
     private static void displayFigureWithBiggestArea(Figure[] figures){
         Figure area = figures[0];
-        for (int i = 0; i < figures.length - 1; i++) {
-            if(figures[i].area() < figures[i + 1].area()){
-                area = figures[i + 1];
+        for (int i = 0; i < figures.length; i++) {
+            if(area.area() < figures[i].area()){
+                area = figures[i];
             }
         }
         System.out.println("Фігура з найбільшею площею " + area);
