@@ -1,9 +1,9 @@
 package ua.nalezhytyi.hw9;
 
 public class Triangle extends Figure {
-    double aSide;
-    double bSide;
-    double cSide;
+    private double aSide;
+    private double bSide;
+    private double cSide;
 
     public Triangle(double aSide, double bSide, double cSide) {
         this.aSide = aSide;
@@ -35,5 +35,12 @@ public class Triangle extends Figure {
     // area using a base height product
     public static double area(double base, double height) {
         return 0.5 * base * height;
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{"
+                + area() +
+                '}';
     }
 }
