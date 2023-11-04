@@ -20,7 +20,6 @@ public class Square extends Figure {
     @Override
     public String toString() {
         return "Square{" +
-                 area() +
                 '}';
     }
 }

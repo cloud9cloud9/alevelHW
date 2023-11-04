@@ -40,7 +40,7 @@ public class Triangle extends Figure {
     @Override
     public String toString() {
         return "Triangle{"
-                + area() +
+                +
                 '}';
     }
 }

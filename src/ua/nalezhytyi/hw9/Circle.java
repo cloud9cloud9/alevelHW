@@ -19,8 +19,7 @@ public class Circle extends Figure{
 
     @Override
     public String toString() {
-        return "Circle area{" +
-                  area() +
+        return "Circle {" +
                 '}';
     }
 }
