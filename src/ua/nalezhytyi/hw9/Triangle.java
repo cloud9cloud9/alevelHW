@@ -5,6 +5,8 @@ public class Triangle extends Figure {
     private double bSide;
     private double cSide;
 
+    public Triangle(){}
+
     public Triangle(double aSide, double bSide, double cSide) {
         this.aSide = aSide;
         this.bSide = bSide;
@@ -31,16 +33,13 @@ public class Triangle extends Figure {
         double angleInRadians = Math.toRadians(angleInDegrees);
         return 0.5 * aSide * bSide * Math.sin(angleInRadians);
     }
+    public double area(double angleInDegrees, double aSide, double bSide) {
+        double angleInRadians = Math.toRadians(angleInDegrees);
+        return 0.5 * aSide * bSide * Math.sin(angleInRadians);
+    }
 
     // area using a base height product
     public static double area(double base, double height) {
         return 0.5 * base * height;
-    }
-
-    @Override
-    public String toString() {
-        return "Triangle{"
-                +
-                '}';
     }
 }
