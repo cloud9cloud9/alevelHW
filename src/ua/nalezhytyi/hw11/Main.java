@@ -10,6 +10,9 @@ public class Main {
         array.add(1);
         array.add(2);
         array.add(3);
+        array.add(4);
+        array.add(4);
+        array.add(4);
         System.out.println(Arrays.toString(array.get()));
         array.add(4, 1);
         array.add(3, 0);

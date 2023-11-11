@@ -7,6 +7,8 @@ public class ArrayList<T> {
     private Object[] array;
     private int size;
 
+    private int counter = 0;
+
     ArrayList(int size) {
         this.size = size;
         array = new Object[size];
@@ -15,17 +17,26 @@ public class ArrayList<T> {
 
     //Add element to the end of array {1,2,3} -> {1,2,3,4}
     void add(T element) {
-        T[] destinationArray = (T[]) Arrays.copyOf(array, array.length + 1);
-        destinationArray[array.length] = element;
-        array = destinationArray;
-    }
+        if (counter == array.length) {
+            array = Arrays.copyOf(array, array.length + 1);
+        }
+        array[counter++] = element;
+}
 
 
     //Add element to given position of array {1,2,3} -> {1,4,2,3}
     void add(T element, int index) {
-        T[] destinationArray = (T[]) Arrays.copyOf(array, array.length);
-        destinationArray[index] = element;
-        array = destinationArray;
+        if (index >= 0 && index <= counter) {
+            T[] newArray = (T[]) Arrays.copyOf(array, array.length + 1);
+            System.arraycopy(array, 0, newArray, 0, index);
+            // Додати новий елемент
+            newArray[index] = element;
+            // Скопіювати елементи після бажаного індексу
+            System.arraycopy(array, index, newArray, index + 1, array.length - index);
+            // Замінити оригінальний масив новим
+            array = newArray;
+            counter++;
+        }
     }
 
     //
@@ -53,7 +64,6 @@ public class ArrayList<T> {
     }
 
     T get(int index) {
-        T[] destinationArray = (T[]) Arrays.copyOf(array, array.length);
         if (index >= 0 && index < array.length) {
             return (T) array[index];
         } else {
