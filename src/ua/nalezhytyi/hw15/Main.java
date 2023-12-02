@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -19,14 +16,17 @@ public class Main {
         fileOutput.createNewFile();
 
         List<Products> products = readFile(file);
-        String filePath = "C:\\Users\\Vladick\\IdeaProjects\\alevelhomework\\src\\ua\\nalezhytyi\\hw15\\Output.txt";
+        String filePath = fileOutput.getAbsolutePath();
 
+        List<String> outputData = new ArrayList<>();
 
-        filterProductsByQuantity(products, 3, filePath);
-        summaryQuantityOfProduct(products, filePath);
-        calculateAveragePrice(products, filePath);
-        sortedProductsByPrice(products, filePath);
-        summaryPriceOfAllProduct(products, filePath);
+        filterProductsByQuantity(products, 3, outputData);
+        summaryQuantityOfProduct(products, outputData);
+        calculateAveragePrice(products, outputData);
+        sortedProductsByPrice(products, outputData);
+        summaryPriceOfAllProduct(products, outputData);
+
+        writeToOutputFile(outputData, filePath);
 
 
     }
@@ -52,67 +52,65 @@ public class Main {
         return listOfProduct;
     }
 
-    private static void filterProductsByQuantity(List<Products> productsList, int quantityOfProducts, String folderPath) throws IOException {
+    private static void filterProductsByQuantity(List<Products> productsList, int quantityOfProducts, List<String> outputData) throws IOException {
         List<String> newList = productsList.stream()
                 .filter(s -> s.getQuantity() >= quantityOfProducts)
-                .map(product -> "Name of Products " + product.getNameOfProducts() + " Quantity of products "
-                + product.getQuantity())
+                .map(product -> "Filter by quantity" + "Name of Products " + product.getNameOfProducts() + " Quantity of products "
+                        + product.getQuantity())
                 .collect(Collectors.toList());
 
-        Path folder = Paths.get(folderPath);
-        Path filePath = folder.resolve("C:\\Users\\Vladick\\IdeaProjects\\alevelhomework\\src\\ua\\" +
-                "nalezhytyi\\hw15\\Output.txt");
-        Files.write(filePath, newList, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+        outputData.addAll(newList);
     }
 
-    private static void summaryQuantityOfProduct(List<Products> productsList, String folderPath) throws IOException {
+    private static void summaryQuantityOfProduct(List<Products> productsList, List<String> outputData) throws IOException {
         int sumQuantity = productsList.stream()
                 .mapToInt(Products::getQuantity)
                 .sum();
-        String sumQuantities ="Summary quantity of all products " + String.valueOf(sumQuantity);
-        Path folder = Paths.get(folderPath);
-        Path filePath = folder.resolve("C:\\Users\\Vladick\\IdeaProjects\\alevelhomework\\src\\ua\\" +
-                "nalezhytyi\\hw15\\Output.txt");
-        Files.write(filePath, Collections.singleton(sumQuantities), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+        String representSumQuantityByString = "Summary quantity of all products " + String.valueOf(sumQuantity);
+        outputData.add(representSumQuantityByString);
     }
 
-    private static void calculateAveragePrice(List<Products> productsList, String folderPath) throws IOException {
+    private static void calculateAveragePrice(List<Products> productsList, List<String> outputData) throws IOException {
         double sumQuantity = productsList.stream()
                 .mapToDouble(Products::getQuantity)
                 .sum();
         double sumPrice = productsList.stream()
-                .mapToDouble(Products::getPrice)
+                .mapToDouble(product -> product.getQuantity() * product.getPrice())
                 .sum();
 
-        String sumQuantities = "Avarage price of product " + String.valueOf(sumPrice / sumQuantity);
-        Path folder = Paths.get(folderPath);
-        Path filePath = folder.resolve("C:\\Users\\Vladick\\IdeaProjects\\alevelhomework\\src\\ua\\" +
-                "nalezhytyi\\hw15\\Output.txt");
-        Files.write(filePath, Collections.singleton(sumQuantities), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+        double averagePrice = sumPrice / sumQuantity;
+        double roundedAverage = Math.round(averagePrice * 100.0) / 100.0;
+        String sumQuantities = "Average price of product " + roundedAverage;
 
+        outputData.add(sumQuantities);
 
     }
 
-    private static void sortedProductsByPrice(List<Products> productsList, String folderPath) throws IOException {
+    private static void sortedProductsByPrice(List<Products> productsList, List<String> outputData) throws IOException {
         Comparator<Products> comparatorOfPrice = Comparator.comparing(Products::getPrice);
         List<String> newList = productsList.stream()
                 .sorted(comparatorOfPrice.reversed())
-                .map(s -> "Name of products " + s.getNameOfProducts() + " and price of this product is " + s.getPrice())
+                .map(s -> "Sorted by price: " + " Name of products " + s.getNameOfProducts() + " and price of this product is " + s.getPrice())
                 .collect(Collectors.toList());
-        Path folder = Paths.get(folderPath);
-        Path filePath = folder.resolve("C:\\Users\\Vladick\\IdeaProjects\\alevelhomework\\src\\ua\\" +
-                "nalezhytyi\\hw15\\Output.txt");
-        Files.write(filePath, newList, StandardCharsets.UTF_8, (OpenOption) StandardOpenOption.APPEND);
+
+        outputData.addAll(newList);
     }
 
-    private static void summaryPriceOfAllProduct(List<Products> productsList, String folderPath) throws IOException {
+    private static void summaryPriceOfAllProduct(List<Products> productsList, List<String> outputData) throws IOException {
         double summary = productsList.stream()
                 .mapToDouble(product -> product.getQuantity() * product.getPrice())
                 .sum();
-        String summaryPriceOfAllProd ="Summary price of all products " + String.valueOf(summary);
-        Path folder = Paths.get(folderPath);
-        Path filePath = folder.resolve("C:\\Users\\Vladick\\IdeaProjects\\alevelhomework\\src\\ua\\" +
-                "nalezhytyi\\hw15\\Output.txt");
-        Files.write(filePath, Collections.singleton(summaryPriceOfAllProd), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+        String summaryPriceOfAllProd = "Summary price of all products " + String.valueOf(summary);
+
+        outputData.add(summaryPriceOfAllProd);
+    }
+
+    private static void writeToOutputFile(List<String> data, String filePath) throws IOException {
+        Path outputPath = Paths.get(filePath);
+        if (Files.size(outputPath) > 0) {
+            Files.write(outputPath, data, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
+        } else {
+            Files.write(outputPath, data, StandardCharsets.UTF_8, StandardOpenOption.CREATE);
+        }
     }
 }
