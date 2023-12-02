@@ -1,0 +1,15 @@
+
+Name of Products Eggs Quantity of products 10
+Name of Products Cucumber Quantity of products 5
+Name of Products Cheese Quantity of products 3
+Name of Products Apple Quantity of products 6
+Summary quantity of all rpoducts 29
+Avarage price of product 0.42068965517241375
+Name of products Chicken and price of this product is 5.0
+Name of products Cheese and price of this product is 2.5
+Name of products Milk and price of this product is 1.5
+Name of products Apple and price of this product is 1.2
+Name of products Bread and price of this product is 1.0
+Name of products Cucumber and price of this product is 0.8
+Name of products Eggs and price of this product is 0.2
+Summary price of all products 34.7
