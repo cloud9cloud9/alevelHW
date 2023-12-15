@@ -1,9 +1,9 @@
 package ua.nalezhytyi.hw15;
 
 public class Products {
-    String nameOfProducts;
-    int quantity;
-    double price;
+    private String nameOfProducts;
+    private int quantity;
+    private double price;
 
 
     @Override
@@ -19,25 +19,16 @@ public class Products {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public String getNameOfProducts() {
         return nameOfProducts;
     }
 
-    public void setNameOfProducts(String nameOfProducts) {
-        this.nameOfProducts = nameOfProducts;
-    }
 
     public Products(String nameOfProducts, int quantity, double price) {
         this.nameOfProducts = nameOfProducts;
