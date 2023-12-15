@@ -1,6 +1,7 @@
 package ua.nalezhytyi.hw15;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
@@ -31,28 +32,30 @@ public class Main {
 
     }
 
-    private static List<Products> readFile(File fileInput) throws IOException {
+    private static List<Products> readFile(File fileInput) {
         List<Products> listOfProduct = new ArrayList<>();
-        RandomAccessFile randomAccessFile = new RandomAccessFile(fileInput, "rw");
 
-        String line;
-        while ((line = randomAccessFile.readLine()) != null) {
-            String[] parts = line.split("\\|");
+        try(RandomAccessFile randomAccessFile = new RandomAccessFile(fileInput, "rw")) {
+            String line;
+            while ((line = randomAccessFile.readLine()) != null) {
+                String[] parts = line.split("\\|");
 
-            if (parts.length == 3) {
-                String productName = parts[0].trim();
-                int quantity = Integer.parseInt(parts[1].trim());
-                double price = Double.parseDouble(parts[2].trim());
+                if (parts.length == 3) {
+                    String productName = parts[0].trim();
+                    int quantity = Integer.parseInt(parts[1].trim());
+                    double price = Double.parseDouble(parts[2].trim());
 
-                Products products = new Products(productName, quantity, price);
-                listOfProduct.add(products);
+                    Products products = new Products(productName, quantity, price);
+                    listOfProduct.add(products);
+                }
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        randomAccessFile.close();
         return listOfProduct;
     }
 
-    private static void filterProductsByQuantity(List<Products> productsList, int quantityOfProducts, List<String> outputData) throws IOException {
+    private static void filterProductsByQuantity(List<Products> productsList, int quantityOfProducts, List<String> outputData){
         List<String> newList = productsList.stream()
                 .filter(s -> s.getQuantity() >= quantityOfProducts)
                 .map(product -> "Filter by quantity" + "Name of Products " + product.getNameOfProducts() + " Quantity of products "
@@ -62,7 +65,7 @@ public class Main {
         outputData.addAll(newList);
     }
 
-    private static void summaryQuantityOfProduct(List<Products> productsList, List<String> outputData) throws IOException {
+    private static void summaryQuantityOfProduct(List<Products> productsList, List<String> outputData) {
         int sumQuantity = productsList.stream()
                 .mapToInt(Products::getQuantity)
                 .sum();
@@ -70,7 +73,7 @@ public class Main {
         outputData.add(representSumQuantityByString);
     }
 
-    private static void calculateAveragePrice(List<Products> productsList, List<String> outputData) throws IOException {
+    private static void calculateAveragePrice(List<Products> productsList, List<String> outputData) {
         double sumQuantity = productsList.stream()
                 .mapToDouble(Products::getQuantity)
                 .sum();
@@ -86,7 +89,7 @@ public class Main {
 
     }
 
-    private static void sortedProductsByPrice(List<Products> productsList, List<String> outputData) throws IOException {
+    private static void sortedProductsByPrice(List<Products> productsList, List<String> outputData){
         Comparator<Products> comparatorOfPrice = Comparator.comparing(Products::getPrice);
         List<String> newList = productsList.stream()
                 .sorted(comparatorOfPrice.reversed())
@@ -96,7 +99,7 @@ public class Main {
         outputData.addAll(newList);
     }
 
-    private static void summaryPriceOfAllProduct(List<Products> productsList, List<String> outputData) throws IOException {
+    private static void summaryPriceOfAllProduct(List<Products> productsList, List<String> outputData) {
         double summary = productsList.stream()
                 .mapToDouble(product -> product.getQuantity() * product.getPrice())
                 .sum();
@@ -105,12 +108,16 @@ public class Main {
         outputData.add(summaryPriceOfAllProd);
     }
 
-    private static void writeToOutputFile(List<String> data, String filePath) throws IOException {
+    private static void writeToOutputFile(List<String> data, String filePath)  {
         Path outputPath = Paths.get(filePath);
-        if (Files.size(outputPath) > 0) {
-            Files.write(outputPath, data, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
-        } else {
-            Files.write(outputPath, data, StandardCharsets.UTF_8, StandardOpenOption.CREATE);
+        try {
+            if (Files.size(outputPath) > 0) {
+                Files.write(outputPath, data, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
+            } else {
+                Files.write(outputPath, data, StandardCharsets.UTF_8, StandardOpenOption.CREATE);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
