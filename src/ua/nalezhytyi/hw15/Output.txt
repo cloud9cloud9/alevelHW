@@ -1,0 +1,14 @@
+Filter by quantityName of Products Eggs Quantity of products 10
+Filter by quantityName of Products Cucumber Quantity of products 5
+Filter by quantityName of Products Cheese Quantity of products 3
+Filter by quantityName of Products Apple Quantity of products 6
+Summary quantity of all products 29
+Average price of product 1.2
+Sorted by price:  Name of products Chicken and price of this product is 5.0
+Sorted by price:  Name of products Cheese and price of this product is 2.5
+Sorted by price:  Name of products Milk and price of this product is 1.5
+Sorted by price:  Name of products Apple and price of this product is 1.2
+Sorted by price:  Name of products Bread and price of this product is 1.0
+Sorted by price:  Name of products Cucumber and price of this product is 0.8
+Sorted by price:  Name of products Eggs and price of this product is 0.2
+Summary price of all products 34.7
