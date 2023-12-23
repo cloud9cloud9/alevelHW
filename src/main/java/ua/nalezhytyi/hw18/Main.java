@@ -132,7 +132,7 @@ public class Main {
     public static List<User> getUsersWithMoreThanFiveOrders() {
         try (EntityManager em = getConnection()) {
             em.getTransaction().begin();
-            String hql = "SELECT u FROM User u JOIN FETCH u.orderList o WHERE u.id IN (SELECT u.id FROM User u JOIN u.orderList o GROUP BY u.id HAVING COUNT(o) > 5)";
+            String hql = "SELECT o FROM User o where SIZE(o.orderList) > 5";
             Query query = em.createQuery(hql);
             List<User> result = query.getResultList();
             em.getTransaction().commit();
