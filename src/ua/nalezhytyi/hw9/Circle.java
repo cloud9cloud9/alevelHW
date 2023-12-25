@@ -1,7 +1,8 @@
 package ua.nalezhytyi.hw9;
 
-public class Circle extends Figure{
+public  class Circle extends Figure{
     private double radius;
+    public Circle(){}
 
     public Circle(double radius) {
         this.radius = radius;
@@ -14,6 +15,10 @@ public class Circle extends Figure{
 
     @Override
     public double area() {
+        return Math.PI * (radius * radius);
+    }
+
+    public double area(double radius) {
         return Math.PI * (radius * radius);
     }
 
