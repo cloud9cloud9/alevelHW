@@ -18,10 +18,12 @@ public class Task2 {
         }
 
         for (int i = 0; i < triangle.length; i++) {
-            for (int j = 0; i < triangle[i].length - 1; j++) {
+            for (int j = 0; j < triangle[i].length ; j++) {
                 System.out.print(triangle[i][j] + " ");
             }
             System.out.println();
         }
     }
 }
+// на 21 рядку замінив змінну i на j, тепер все вірно виводить
+
