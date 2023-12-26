@@ -1,4 +1,4 @@
-package ua.nalezhytyi.hw19.task4;
+package ua.nalezhytyi.hw20.task4;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

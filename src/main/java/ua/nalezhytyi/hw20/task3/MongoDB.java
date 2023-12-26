@@ -1,4 +1,4 @@
-package ua.nalezhytyi.hw19.task3;
+package ua.nalezhytyi.hw20.task3;
 
 import com.mongodb.client.*;
 import com.mongodb.client.result.DeleteResult;

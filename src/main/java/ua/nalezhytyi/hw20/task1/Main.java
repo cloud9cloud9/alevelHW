@@ -1,4 +1,4 @@
-package ua.nalezhytyi.hw19.task1;
+package ua.nalezhytyi.hw20.task1;
 
 import java.io.IOException;
 

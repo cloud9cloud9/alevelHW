@@ -1,9 +1,10 @@
-package ua.nalezhytyi.hw19.task4;
+package ua.nalezhytyi.hw20.task4;
 
 import com.mongodb.client.*;
 import com.mongodb.client.result.DeleteResult;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import ua.nalezhytyi.hw20.task4.Address;
 
 public class MongoExample {
     public static void main(String[] args) {

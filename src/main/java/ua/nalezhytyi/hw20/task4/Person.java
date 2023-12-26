@@ -1,9 +1,10 @@
-package ua.nalezhytyi.hw19.task4;
+package ua.nalezhytyi.hw20.task4;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ua.nalezhytyi.hw20.task4.Address;
 
 @Data
 @NoArgsConstructor
