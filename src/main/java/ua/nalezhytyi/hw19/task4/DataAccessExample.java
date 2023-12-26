@@ -8,7 +8,6 @@ public class DataAccessExample {
         createTable();
         create("Vasyl", 33);
         read(1);
-
         update(4, "matriona", "33");
         delete(5);
 

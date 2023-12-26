@@ -4,13 +4,13 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        Person person = new Person("aboba", 123);
+        Person person1 = new Person("aboba22", 123);
         Writer writer = new Writer();
         String filePath = "C:\\Users\\Vladick\\IdeaProjects\\alevelhomework\\src\\main\\" +
                 "java\\ua\\nalezhytyi\\hw19\\some.json";
         try {
-            writer.writeToJsonFile(person,filePath);
-        }catch (Exception e) {
+            writer.writeToJsonFile(person1, filePath);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 

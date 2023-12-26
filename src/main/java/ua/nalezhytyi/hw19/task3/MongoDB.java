@@ -8,6 +8,7 @@ import org.bson.conversions.Bson;
 
 public class MongoDB {
     public static void main(String[] args) {
+
         MongoClient mongoClient = MongoClients.create("mongodb://admin:admin123@localhost:27017");
         MongoDatabase database = mongoClient.getDatabase("test");
         MongoCollection<Document> collection = database.getCollection("humans");
@@ -29,7 +30,7 @@ public class MongoDB {
         }
 //update
         Document search = collection.find(new Document("name", "Max Zivert")).first();
-        if(search != null){
+        if (search != null) {
             System.out.println("Document found: " + search);
             Bson updateValue = new Document("age", "33");
             Bson updateOperation = new Document("$set", updateValue);

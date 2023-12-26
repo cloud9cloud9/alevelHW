@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Person {
+
     @JsonProperty("name")
     private String name;
 
