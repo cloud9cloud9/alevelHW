@@ -22,10 +22,8 @@ public class MongoDB {
 
         //read human
         FindIterable<Document> documents = collection.find();
-        MongoCursor<Document> cursor = documents.cursor();
-        while (cursor.hasNext()) {
-            Document next = cursor.next();
-            System.out.println(next);
+        for(Document document : documents){
+            System.out.println(document);
         }
 //update
         Document search = collection.find(new Document("name", "Max Zivert")).first();
