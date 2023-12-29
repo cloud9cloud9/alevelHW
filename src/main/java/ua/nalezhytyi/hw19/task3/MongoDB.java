@@ -23,10 +23,8 @@ public class MongoDB {
 
         //read human
         FindIterable<Document> documents = collection.find();
-        MongoCursor<Document> cursor = documents.cursor();
-        while (cursor.hasNext()) {
-            Document next = cursor.next();
-            System.out.println(next);
+        for(Document document : documents){
+            System.out.println(document);
         }
 //update
         Document search = collection.find(new Document("name", "Max Zivert")).first();
@@ -38,7 +36,7 @@ public class MongoDB {
             System.out.println("user updated: " + search);
         }
 //delete
-        Document delete = collection.find(new Document("name", "Zoya")).first();
+         Document delete = collection.find(new Document("name", "John Doe")).first();
         DeleteResult result = collection.deleteOne(delete);
     }
 }
